@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BloomKitchenomics.MainPage"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:syncfusionListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HeaderLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="#8dbd07"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontFamily" Value="CeraProBold"/>
+            </Style>
+            <Style x:Key="SubtextLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="#8dbd07"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontFamily" Value="CeraProRegular"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+            <Grid BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="Notification.png" Grid.Row="0" Grid.Column="0" HeightRequest="30" WidthRequest="30" Margin="10"/>
+                <Label Text="Kitchenomics" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10"
+                       Grid.Row="0" Grid.Column="1" 
+                       Style="{StaticResource HeaderLabel}"/>
+                <Image Source="Search.png" Grid.Row="0" Grid.Column="2" HeightRequest="30" WidthRequest="30" Margin="10"/>
+                <Image Source="User.png" Grid.Row="0" Grid.Column="3" HeightRequest="30" WidthRequest="30" Margin="10"/>
+            </Grid>
+        </NavigationPage.TitleView>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--Recipe of the day-->
+            <Grid VerticalOptions="Start" BackgroundColor="AliceBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="MaskGroupHDx.png" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2"
+                   Aspect="AspectFill" HeightRequest="300" WidthRequest="300"/>
+                <Label Text="Recipe of the Day" TextColor="Black" FontSize="20" 
+                   HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                   Margin="10,10,0,0" 
+                   Style="{StaticResource HeaderLabel}"/>
+                <Label Text="Mixed Veges Baked" TextColor="White"
+                       HorizontalTextAlignment="End" VerticalOptions="End"
+                       Grid.Row="1" Grid.Column="1" Margin="0" FontSize="20"
+                        Style="{StaticResource SubtextLabel}"/>
+                <rating:SfRating x:Name="rating" 
+                                 ItemCount="5" Value="3"
+                                 ItemSize="15"
+                                 ReadOnly="True"
+                                 Margin="0,0,10,5"
+                                 Grid.Row="2" Grid.Column="1" 
+                                 HorizontalOptions="End" VerticalOptions="End">
+                    <rating:SfRating.RatingSettings>
+                        <rating:SfRatingSettings RatedFill="Gold" UnRatedFill="White" RatedStrokeWidth="0" UnRatedStrokeWidth="0" />
+                    </rating:SfRating.RatingSettings>
+                </rating:SfRating>
+            </Grid>
+            <!--Find the Recipe-->
+            <Frame Grid.Row="1" 
+                   Margin="15,0,15,0" 
+                   CornerRadius="8" 
+                   Padding="5"
+                   HasShadow="False" 
+                   BackgroundColor="#8dbd07">
+                <AbsoluteLayout>
+                    <Frame HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             BorderColor="White"
+                           CornerRadius="8"
+                           Padding="4"
+                           BackgroundColor="Transparent"
+                           AbsoluteLayout.LayoutBounds="0,0,1,1"
+                           AbsoluteLayout.LayoutFlags="All">
+                        <Grid Margin="0" Padding="0" ColumnSpacing="0"  BackgroundColor="#8dbd07">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<Image Source="Rectangle.png" Grid.Row="0" Grid.ColumnSpan="3" Aspect="Fill"  Margin="5" HorizontalOptions="FillAndExpand"/>-->
+                            <Image Source="ChefLarge.png" Grid.Row="0" Grid.Column="0" HeightRequest="100" HorizontalOptions="Start"/>
+                            <Label LineBreakMode="WordWrap" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" LineHeight="1.5" 
+                       VerticalTextAlignment="End" HorizontalTextAlignment="Start" Style="{StaticResource SubtextLabel}"
+                       Margin="0,0,30,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Find the recipes  &#10;" TextColor="White" Style="{StaticResource SubtextLabel}" FontSize="Medium"/>
+                                        <Span Text="based on what &#10;" TextColor="White" Style="{StaticResource SubtextLabel}" FontSize="Medium"/>
+                                        <Span Text="YOU HAVE AT HOME" TextColor="White" Style="{StaticResource HeaderLabel}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Image Source="SeeMoreButton.png" Grid.Row="0" Grid.Column="2" HorizontalOptions="End"
+                                   Margin="0,0,-20,0"
+                                   HeightRequest="40" WidthRequest="40"/>
+                        </Grid>
+                    </Frame>
+                </AbsoluteLayout>
+            </Frame>
+            
+            <Image Source="Line.png" Grid.Row="2" Aspect="AspectFit" Margin="10,0" HeightRequest="10"/>
+
+            <!--Popular Recipes-->
+            <Grid Grid.Row="3" Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Popular Recipes" TextColor="Black" FontSize="20" 
+                   HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
+                   Grid.Row="0" Grid.Column="0"                    
+                   Style="{StaticResource HeaderLabel}"/>
+                <Button Text="All Recipes" Grid.Row="0" Grid.Column="1"
+                        VerticalOptions="Start" HorizontalOptions="End"
+                        BorderColor="#8dbd07" BorderWidth="1" 
+                        BackgroundColor="Transparent"
+                        Padding="8,5"
+                        HeightRequest="30" CornerRadius="5"
+                        FontSize="15"
+                        Style="{StaticResource HeaderLabel}"/>
+
+                <syncfusionListView:SfListView x:Name="ListOfRecipes"
+                                               AutoFitMode="Height"
+                                               SelectionMode="Single"
+                                               SelectionGesture="Tap"
+                                               IsScrollBarVisible="False"
+                                               Orientation="Horizontal"
+                                               Grid.Row="1" Grid.ColumnSpan="2"
+                                               ItemSpacing="10"
+                                               HeightRequest="200"
+                                       SelectionBackgroundColor="Transparent">
+                    <syncfusionListView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Frame Padding="0" Margin="0,5" HasShadow="True" HeightRequest="100" WidthRequest="130" CornerRadius="5">
+                                        <StackLayout Spacing="5" Padding="5">
+                                            <Image Source="{Binding RecipeImage}" Aspect="AspectFit" HeightRequest="120" WidthRequest="120"/>
+                                            <Label Text="{Binding RecipeName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                                   TextColor="Black" FontSize="Small"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusionListView:SfListView.ItemTemplate>
+                </syncfusionListView:SfListView>
+            </Grid>
+
+            <Image Source="Line.png" Grid.Row="4" Aspect="AspectFit" Margin="10,0" HeightRequest="10"/>
+            
+            <!--Suggested Meal Plan-->
+            <Grid Grid.Row="5" Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Suggested Meal Plan" TextColor="Black" FontSize="20" 
+                   HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
+                   Grid.Row="0" Grid.Column="0"                    
+                   Style="{StaticResource HeaderLabel}"/>
+                <Button Text="Meal Planner" Grid.Row="0" Grid.Column="1"
+                        VerticalOptions="Start" HorizontalOptions="End"
+                        BorderColor="#8dbd07" BorderWidth="1" 
+                        BackgroundColor="Transparent"
+                        Padding="8,5"
+                        HeightRequest="30" CornerRadius="5"
+                        FontSize="15"
+                        Style="{StaticResource HeaderLabel}"/>
+
+                <syncfusionListView:SfListView x:Name="ListOfMealPlan"
+                                               AutoFitMode="Height"
+                                               SelectionMode="Single"
+                                               SelectionGesture="Tap"
+                                               IsScrollBarVisible="False"
+                                               Orientation="Horizontal"
+                                               Grid.Row="1" Grid.ColumnSpan="2"
+                                               ItemSpacing="5"
+                                               HeightRequest="240"
+                                               SelectionBackgroundColor="Transparent">
+                    <syncfusionListView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                        <StackLayout Spacing="5" Padding="5">
+                                            <Label Text="{Binding Day}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                                   TextColor="Gray" FontSize="Small" Style="{StaticResource HeaderLabel}"/>
+                                            <Image Source="{Binding MealImage}" Aspect="AspectFit" HeightRequest="150" WidthRequest="150"/>
+                                        <Label Text="{Binding MealName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource HeaderLabel}"
+                                               TextColor="Gray" FontSize="15"/>
+                                        </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusionListView:SfListView.ItemTemplate>
+                </syncfusionListView:SfListView>
+            </Grid>
+
+            <Image Source="Line.png" Grid.Row="6" Aspect="AspectFit" Margin="10,0" HeightRequest="10"/>
+
+            <!--Suggested Content-->
+            <Grid Grid.Row="7" Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Suggested Contents" TextColor="Black" FontSize="20" 
+                   HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
+                   Grid.Row="0" Grid.Column="0"                    
+                   Style="{StaticResource HeaderLabel}"/>
+                <Button Text="View All" Grid.Row="0" Grid.Column="1"
+                        VerticalOptions="Start" HorizontalOptions="End"
+                        BorderColor="#8dbd07" BorderWidth="1" 
+                        BackgroundColor="Transparent"
+                        Padding="8,5"
+                        HeightRequest="30" CornerRadius="5"
+                        FontSize="15"
+                        Style="{StaticResource HeaderLabel}"/>
+
+                <syncfusionListView:SfListView x:Name="ListOfSuggestedContent"
+                                               ItemSize="200"
+                                               SelectionMode="Single"
+                                               SelectionGesture="Tap"
+                                               IsScrollBarVisible="False"
+                                               Orientation="Horizontal"
+                                               Grid.Row="1" Grid.ColumnSpan="2"
+                                               ItemSpacing="10"
+                                               HeightRequest="240"
+                                       SelectionBackgroundColor="Transparent">
+                    <syncfusionListView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Frame Padding="0" Margin="0,5" HasShadow="True" HeightRequest="140" WidthRequest="140" CornerRadius="5">
+                                        <StackLayout Spacing="0" Padding="5">
+                                            <Grid Padding="0" Margin="0,-20,0,0">
+                                                <Image Source="{Binding ContentImage}"
+                                                   Grid.Row="0" Grid.Column="0" HeightRequest="150" WidthRequest="150"/>
+                                                <Image Source="PlayButton.png" IsVisible="{Binding IsVideo}"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                                   Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40"/>
+                                            </Grid>
+
+                                            <Label Text="{Binding ContentTitle}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                                   TextColor="Gray" FontSize="Small" 
+                                               LineBreakMode="WordWrap" 
+                                               Margin="5,0"
+                                               Style="{StaticResource HeaderLabel}"/>
+                                            <Label Text="{Binding Pages,StringFormat='{0} Pages'}" 
+                                               HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                               Margin="5,0"
+                                               TextColor="Black" FontSize="Small" Style="{StaticResource SubtextLabel}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label"
+                                                             Binding="{Binding IsVideo}"
+                                                             Value="true">
+                                                        <Setter Property="IsVisible" Value="False" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                            <Label Text="{Binding ContentType}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                               TextColor="Black" FontSize="Small" Style="{StaticResource SubtextLabel}"
+                                               Margin="5,0"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusionListView:SfListView.ItemTemplate>
+                </syncfusionListView:SfListView>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
